@@ -1,8 +1,10 @@
+#fork from xlight for personal notes only
 FROM php:7
 
-RUN apt-get update
+#
+#RUN apt-get update
 
-# Install modules : GD mcrypt iconv
+# modules : GD mcrypt iconv
 RUN apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
@@ -23,7 +25,6 @@ RUN curl -o /root/memcached.zip https://github.com/php-memcached-dev/php-memcach
  cd /root && rm -rf /root/php-memcached-* && \
  echo "extension=memcached.so" > /usr/local/etc/php/conf.d/memcached.ini  && \
  echo "memcached.use_sasl = 1" >> /usr/local/etc/php/conf.d/memcached.ini 
-
 
 # install php pdo_mysql
 RUN docker-php-ext-install pdo_mysql mysqli iconv mbstring json mcrypt opcache 
